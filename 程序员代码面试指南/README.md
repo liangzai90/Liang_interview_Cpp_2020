@@ -2,5 +2,5 @@
 
 左程云  :books::book:著
 
-记录这本书的学习笔记。:write:
+记录这本书的学习笔记。:orange_book::green_book::pencil:
 
