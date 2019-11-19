@@ -1,22 +1,27 @@
 /***************************
-¡¶³ÌĞòÔ±´úÂëÃæÊÔÖ¸ÄÏ--ITÃûÆóËã·¨ÓëÊı¾İ½á¹¹ÌâÄ¿×îÓÅ½â¡· ×ó³ÌÔÆ  Öø
+ã€Šç¨‹åºå‘˜ä»£ç é¢è¯•æŒ‡å—--ITåä¼ç®—æ³•ä¸æ•°æ®ç»“æ„é¢˜ç›®æœ€ä¼˜è§£ã€‹ å·¦ç¨‹äº‘  è‘—
 
-Éè¼ÆÒ»¸öÓÉgetMin¹¦ÄÜµÄÕ»
+è®¾è®¡ä¸€ä¸ªç”±getMinåŠŸèƒ½çš„æ ˆ
 
-ÌâÄ¿£ºÊµÏÖÒ»¸öÌØµÄÕ»£¬ÔÚÊµÏÖÕ»µÄ»ù±¾¹¦ÄÜµÄ»ù´¡ÉÏ£¬ÔÙÊµÏÖ·µ»ØÕ»ÖĞ×îĞ¡ÔªËØµÄ²Ù×÷¡£
+é¢˜ç›®ï¼šå®ç°ä¸€ä¸ªç‰¹çš„æ ˆï¼Œåœ¨å®ç°æ ˆçš„åŸºæœ¬åŠŸèƒ½çš„åŸºç¡€ä¸Šï¼Œå†å®ç°è¿”å›æ ˆä¸­æœ€å°å…ƒç´ çš„æ“ä½œã€‚
 
-ÒªÇó£º
-1.pop, push, getMin²Ù×÷µÄÊ±¼ä¸´ÔÓ¶È¶¼ÊÇO(1).
-2.Éè¼ÆÕ»µÄÀàĞÍ¿ÉÒÔÊ¹ÓÃÏÖ³ÉµÄÕ»½á¹¹
+è¦æ±‚ï¼š
+1.pop, push, getMinæ“ä½œçš„æ—¶é—´å¤æ‚åº¦éƒ½æ˜¯O(1).
+2.è®¾è®¡æ ˆçš„ç±»å‹å¯ä»¥ä½¿ç”¨ç°æˆçš„æ ˆç»“æ„
 
-ÄÑ¶È£º[ ¡ï¡î¡î¡î ]
+éš¾åº¦ï¼š[ â˜…â˜†â˜†â˜† ]
 
+é¢˜ç›®åœ°å€ï¼š
+https://www.nowcoder.com/practice/05e57ce2cd8e4a1eae8c3b0a7e9886be?tpId=101&tqId=33073&rp=1&ru=/ta/programmer-code-interview-guide&qru=/ta/programmer-code-interview-guide/question-ranking
 
 **************************************/
+
 
 #include <assert.h>
 #include <iostream>
 #include <stack>
+#include <stdlib.h>
+#include <string>
 using namespace std;
 
 
@@ -59,7 +64,7 @@ DataType MyStack<DataType>::pop()
 	assert(!m_normalStack.empty() && "pop() Error");
 
 	DataType elem;
-	elem = m_normalStack.top();//C++µÄstack£¬Ö»ÄÜÍ¨¹ıtop()È¥·ÃÎÊ×î¶¥²¿ÔªËØ£¬pop()ÊÇ²»»á·µ»ØÖµµÄ
+	elem = m_normalStack.top();//C++çš„stackï¼Œåªèƒ½é€šè¿‡top()å»è®¿é—®æœ€é¡¶éƒ¨å…ƒç´ ï¼Œpop()æ˜¯ä¸ä¼šè¿”å›å€¼çš„
 	m_normalStack.pop();
 	if (elem <= m_minStack.top())
 	{
@@ -78,7 +83,7 @@ void MyStack<DataType>::push(DataType elem)
 	{
 		m_minStack.push(elem);
 	}
-	//×¢ÒâÕâÀïµÄ±ß½çÌõ¼ş.µÈÓÚÒ²ÒªÈëÕ»£¬·ñÔò²»ÖªµÀÊ²Ã´Ê±ºò³öÕ»
+	//æ³¨æ„è¿™é‡Œçš„è¾¹ç•Œæ¡ä»¶.ç­‰äºä¹Ÿè¦å…¥æ ˆï¼Œå¦åˆ™ä¸çŸ¥é“ä»€ä¹ˆæ—¶å€™å‡ºæ ˆ
 	else if(elem <= m_minStack.top())
 	{
 		m_minStack.push(elem);
@@ -103,8 +108,8 @@ int MyStack<DataType>::size()
 
 
 
-//////////////////²âÊÔ°¸Àı
-//»ù±¾¹¦ÄÜ²âÊÔ
+//////////////////æµ‹è¯•æ¡ˆä¾‹
+//åŸºæœ¬åŠŸèƒ½æµ‹è¯•
 void test1()
 {
 	cout << "---------test1---------" << endl;
@@ -125,7 +130,7 @@ void test1()
 	}
 }
 
-//±ß½çÖµ²âÊÔ
+//è¾¹ç•Œå€¼æµ‹è¯•
 void test2()
 {
 	cout << "---------test2---------" << endl;
@@ -145,7 +150,7 @@ void test2()
 
 }
 
-//ÎŞĞ§ÊäÈë
+//æ— æ•ˆè¾“å…¥
 void test3()
 {
 	cout << "---------test3---------" << endl;
@@ -155,24 +160,65 @@ void test3()
 	myStack3.pop();
 }
 
-////ĞÔÄÜ²âÊÔ£¨´óÁ¿Êı¾İ£©
+////æ€§èƒ½æµ‹è¯•ï¼ˆå¤§é‡æ•°æ®ï¼‰
 void test4()
 {
 	cout << "---------test4---------" << endl;
 
 }
 
+int getOperaType(string& str)
+{
+    if(0 == str.compare("push"))
+    {
+        return 1;
+    }
+    else if(0 == str.compare("pop"))
+    {
+        return 2;
+    }
+    else if(0 == str.compare("getMin"))
+    {
+        return 3;
+    }
+    else 
+    {
+        return 0;
+    }
+}
 
 int main()
 {
-	test1();
-	test2();
-	test3();
-	test4();
+    MyStack<int> myStack;
+    int iTotalNum = 0;
+    cin>>iTotalNum;
+    
+    for(int i=0;i<iTotalNum;i++)
+    {
+        string stropea;
+        int num = 0;
+        int iOpeaType = 0;
+        cin>>stropea;
+        if(1 == getOperaType(stropea))
+        {
+            // push
+            int iInput=0;
+            cin>>iInput;
+            myStack.push(iInput);
+        }
+        else if(2 == getOperaType(stropea))
+        {
+            // pop
+            myStack.pop();
+        }
+        else if(3 == getOperaType(stropea))
+        {
+            // getMin
+            cout << myStack.getMin()<<endl;
+        }
+        
+    }
 
-
-	cout << endl;
-	cout << "¡¶³ÌĞòÔ±´úÂëÃæÊÔÖ¸ÄÏ--ITÃûÆóËã·¨ÓëÊı¾İ½á¹¹ÌâÄ¿×îÓÅ½â¡·" << endl;
-	system("pause");
 	return 0;
 }
+
