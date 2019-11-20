@@ -16,9 +16,12 @@
 题目地址：
 https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&rp=3&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
-请特别注意养成写测试用例的好习惯
-请特别注意养成写测试用例的好习惯
-请特别注意养成写测试用例的好习惯
+
+测试用例：
+
+1.长度为n的数组里包含一个或多个重复的数字
+2.数组中不包含重复数字
+3.无效输入测试用例（输入空指针，长度为n的数组中包含0~n-1之外的数字）
 
 *******************************************/
 
@@ -53,7 +56,7 @@ bool duplicate(int numbers[], int length, int* duplication)
 	{
 		while (numbers[i] != i)
 		{
-			////请画一个二维图形来辅助理解.每行只放1个数字，把这1唯的数放到二维数组里面
+			////请画一个二维图形来辅助理解
 			if (numbers[i] == numbers[numbers[i]])
 			{
 				bFind = true;
@@ -97,7 +100,7 @@ void test(char* testName, int numbers[], int lengthNumbers, int expected[], int 
 	int duplication = 0;
 	bool validInput = duplicate(numbers, lengthNumbers, &duplication);
 
-	if (validArgument = validInput)
+	if (validArgument == validInput)
 	{
 		if (validArgument)
 		{
@@ -155,12 +158,21 @@ void test4()
 	test("Test4", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-//无效的输入
+//没有重复的数字
 void test5()
+{
+	int numbers[] = { 2, 1, 4, 5, 4 };//5是合法的数字
+	int duplications[] = { 4 };// not in the test function
+	test("Test5", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
+}
+
+
+//无效的输入
+void test6()
 {
 	int *numbers = nullptr;
 	int duplications[] = { -1 };
-	test("Test5", numbers, 0, duplications, sizeof(duplications) / sizeof(int), false);
+	test("Test6", numbers, 0, duplications, sizeof(duplications) / sizeof(int), false);
 }
 
 
@@ -171,6 +183,7 @@ int main()
 	test3();
 	test4();
 	test5();
+	test6();
 
 	cout << endl;
 	system("pause");
