@@ -80,7 +80,7 @@ bool TwoSameArray(char *A1, char *A2)
 void replaceString2(char* str, int arrLength)
 {
 	////刚开始这里缺少字符串不为空但是长度为0的判断
-	if (nullptr == str || strlen(str) == 0)
+	if (nullptr == str || strlen(str) == 0 || arrLength<=0)
 	{
 		return;
 	}
