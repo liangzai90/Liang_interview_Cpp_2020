@@ -40,6 +40,14 @@ int minOfTwoNum(int A, int B)
 	return A > B ? B : A;
 }
 
+int MaxOfTwoNum(int A, int B)
+{
+	return A > B ? A : B;
+}
+
+
+
+
 //申请一个M*N的二位数组空间
 int MinPathRoad(int* arrPath, const int rows,const  int cols)
 {
@@ -83,12 +91,12 @@ int MinPathRoad(int* arrPath, const int rows,const  int cols)
 
 	for (int j = 1; j < cols; j++)
 	{
-		copyPath[0][j] = *(arrPath + j) + *(arrPath + j - 1);
+		copyPath[0][j] = *(arrPath + j) + copyPath[0][j-1]; ///这里容易出错
 	}
 
 	for (int i = 1; i < rows; i++)
 	{
-        copyPath[i][0] = *(arrPath + i*cols ) + *(arrPath + (i - 1)*cols );
+		copyPath[i][0] = *(arrPath + i*cols) + copyPath[i - 1][0]; ///这里容易出错
 	}
 
 	////时间复杂度是O(M*N)
@@ -138,7 +146,7 @@ int MinPathRoad2(int* arrPath, const int rows, const  int cols)
 		}
 		if (j>0)
 		{
-			copyPath[j] = *(arrPath + 0*cols + j) + *(arrPath + 0*cols + j - 1);
+			copyPath[j] = *(arrPath + 0 * cols + j) + copyPath[j-1];
 		}
 	}
 
@@ -152,7 +160,7 @@ int MinPathRoad2(int* arrPath, const int rows, const  int cols)
 			}
 			else
 			{
-				int tempValue = minOfTwoNum(copyPath[j], copyPath[j - 1]);
+				//int tempValue = minOfTwoNum(copyPath[j], copyPath[j - 1]);
 				copyPath[j] = minOfTwoNum(copyPath[j], copyPath[j - 1]) + *(arrPath + i*cols + j);
 			}
 
@@ -169,19 +177,247 @@ int MinPathRoad2(int* arrPath, const int rows, const  int cols)
 
 
 
-//====================测试用例=================
 
-void test1()
-{
-	int arrPath[4][4] = { { 1, 3, 5, 9 }, { 8, 1, 3, 4 }, { 5, 0, 6, 1 }, { 8, 8, 4, 0 } };
-	cout << MinPathRoad((int *)arrPath, 4, 4) << endl;
+//申请一个一维数组空间，且取rows,cols更小的那个
+int MinPathRoad3(int* arrPath, const int rows, const  int cols)
+{	
+	//=============步子不能迈太大，先从if,else入手。然后再去整合到一起。
+	if (arrPath == nullptr || rows < 0 || cols < 0)
+	{
+		throw new std::exception("Invalid para");
+	}
+	if (rows == 0 || cols == 0)
+	{
+		return 0;
+	}
+
+	////分配一行，cols个元素，按行扫描
+	if (rows >= cols)
+	{
+		int result = 0;
+		//用一个一维数组来存储临时变量
+		int* copyPath = new int[cols];
+
+		for (int j = 0; j < cols; j++)
+		{
+			if (j == 0)
+			{
+				copyPath[j] = *(arrPath + j);
+			}
+			if (j>0)
+			{
+				copyPath[j] = *(arrPath + 0 * cols + j) + copyPath[j - 1];
+			}
+		}
+
+		for (int i = 1; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (j == 0)
+				{
+					copyPath[j] = copyPath[j] + *(arrPath + i*cols + j);
+				}
+				else
+				{
+					//int tempValue = minOfTwoNum(copyPath[j], copyPath[j - 1]);
+					copyPath[j] = minOfTwoNum(copyPath[j], copyPath[j - 1]) + *(arrPath + i*cols + j);
+				}
+
+			}
+		}
+
+		result = copyPath[cols - 1];
+
+		delete[] copyPath; //不要删太早了
+
+		return result;
+	}
+	else
+	{
+		////分配一列，rows个元素，按列扫描
+		int result = 0;
+		//用一个一维数组来存储临时变量
+		int* copyPath = new int[rows];
+
+		for (int i = 0; i < rows; i++)
+		{
+			if (i == 0)
+			{
+				copyPath[i] = *(arrPath + i);
+			}
+			if (i>0)
+			{
+				copyPath[i] = *(arrPath + i * cols ) + copyPath[i - 1];
+			}
+		}
+
+		for (int j = 1; j < cols; j++)
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				if (i == 0)
+				{
+					copyPath[i] = copyPath[i] + *(arrPath + i*cols + j);
+				}
+				else
+				{
+					copyPath[i] = minOfTwoNum(copyPath[i], copyPath[i - 1]) + *(arrPath + i*cols + j);
+				}
+
+			}
+		}
+
+		result = copyPath[rows - 1];
+		delete[] copyPath; //不要删太早了
+		return result;
+	}
 }
 
 
+
+//申请一个一维数组空间，且取rows,cols更小的那个。不使用if,else，而是整合rows,cols判断
+int MinPathRoad4(int* arrPath, const int rows, const  int cols)
+{
+	if (arrPath == nullptr || rows < 0 || cols < 0)
+	{
+		throw new std::exception("Invalid para");
+	}
+	if (rows == 0 || cols == 0)
+	{
+		return 0;
+	}
+
+	bool bRowMore = (rows>cols);//rows是否更大
+	int result = 0;
+
+	//用一个一维数组来存储临时变量
+	int less = minOfTwoNum(rows, cols);
+	int more = MaxOfTwoNum(rows, cols);
+	int* copyPath = new int[less];
+
+	copyPath[0] = *(arrPath);
+	for (int i = 1; i < less; i++)
+	{
+		//bRowMore  ? arr[j][0] : arr[0][j]   
+		copyPath[i] = copyPath[i - 1] + (bRowMore ? *(arrPath + i) : *(arrPath + i * cols));
+	}//
+
+
+	for (int i = 1; i < more; i++)
+	{
+		for (int j = 0; j < less; j++)
+		{
+			if (j == 0)
+			{
+				copyPath[0] = copyPath[0] + (bRowMore ? *(arrPath + i*cols+j) : *(arrPath + i));
+			}
+			else
+			{
+				int tempValue = minOfTwoNum(copyPath[j], copyPath[j - 1]);
+				copyPath[j] = minOfTwoNum(copyPath[j], copyPath[j - 1]) + (bRowMore ? *(arrPath + i*cols + j) : *(arrPath + i*rows + j));
+			}
+		}
+	}
+	result = copyPath[less - 1];
+
+	delete[] copyPath;
+	return result;
+
+}
+
+
+//====================测试用例=================
+// 1 3 5 9 
+// 8 1 3 4  
+// 5 0 6 1
+// 8 8 4 0
+void test1()
+{
+	cout << "Test1================expected:12" << endl;
+	int arrPath[4][4] = { { 1, 3, 5, 9 }, { 8, 1, 3, 4 }, { 5, 0, 6, 1 }, { 8, 8, 4, 0 } };
+	cout << MinPathRoad((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad2((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 4) << endl;
+}
+
+
+//
+// 1 1 1
+// 3 4 2
+// 7 8 3
+// 6 6 0
 void test2()
 {
-	int arrPath[4][4] = { { 1, 3, 5, 9 }, { 8, 1, 3, 4 }, { 5, 0, 6, 1 }, { 8, 8, 4, 0 } };
+	cout << "Test2================expected:8" << endl;
+	int arrPath[4][3] = {{ 1,1,1 }, { 3,4,2 }, { 7,8,3 }, {6,6,0 } };
+	cout << MinPathRoad((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad2((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 3) << endl;
+}
+
+//
+// 1 1 2
+// 1 4 2
+// 2 8 3
+// 3 1 0
+void test3()
+{
+	cout << "Test3================expected:8" << endl;
+	int arrPath[4][3] = { { 1, 1, 2 }, { 1, 4, 2 }, {2, 8, 3 }, { 3, 1, 0 } };
+	cout << MinPathRoad((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad2((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 3) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 3) << endl;
+}
+
+
+//
+// 1  2   3   4
+// 5  0   7   8
+// 9  0  11  12
+// 0  14  0  0
+void test4()
+{
+	cout << "Test4================expected:14" << endl;
+	int arrPath[4][4] = { { 1, 2, 3,4 }, { 5,0,7,8}, { 9,0,11,12 }, {0,14, 0,0 } };
+	cout << MinPathRoad((int *)arrPath, 4, 4) << endl;
 	cout << MinPathRoad2((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 4) << endl;
+}
+
+//
+// 1 1 1 1
+// 1 1 1 1
+// 1 1 1 1
+// 1 1 1 1
+void test5()
+{
+	cout << "Test5================expected:7" << endl;
+	int arrPath[4][4] = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 } };
+	cout << MinPathRoad((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad2((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 4) << endl;
+}
+
+
+//
+// 0 0 0 0
+// 0 1 1 0
+// 0 0 0 1
+// 0 1 0 0
+void test6()
+{
+	cout << "Test6================expected:0" << endl;
+	int arrPath[4][4] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+	cout << MinPathRoad((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad2((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad3((int *)arrPath, 4, 4) << endl;
+	cout << MinPathRoad4((int *)arrPath, 4, 4) << endl;
 }
 
 
@@ -190,6 +426,10 @@ int main()
 {
 	test1();
 	test2();
+	test3();
+	test4();
+	test5();
+	test6();
 
 
 	system("pause");
