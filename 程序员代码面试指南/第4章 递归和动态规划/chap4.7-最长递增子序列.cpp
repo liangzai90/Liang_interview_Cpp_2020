@@ -156,8 +156,24 @@ void getdp2(int* arr, int length, int *dp)
 		}
 
 		right = MaxNum(right, L);
-		ends[R] = arr[i];
+		ends[L] = arr[i];
 		dp[i] = L + 1;
+
+
+		/////////////////////////////////////////////
+		cout << "ends["<<i<<"]: ";
+		for (int k = 0; k < i; k++)
+		{
+			cout << ends[k] << ",";
+		}
+		cout << endl << endl;
+		cout << "dp[" << i << "]: ";
+		for (int k = 0; k < i; k++)
+		{
+			cout << dp[k] << ",";
+		}
+		cout << endl <<"---->>>>>>><<<<<<<<--------"<< endl;
+		int abcde = 0;
 	}
 
 
@@ -190,10 +206,33 @@ void list2(int *arr, int length)
 void test1()
 {
 	int arr[] = { 2, 1, 5, 3, 6, 4, 8, 9, 7 };
-	list1(arr, sizeof(arr) / sizeof(int));
-	
-	list2(arr, sizeof(arr) / sizeof(int));
+	//list1(arr, sizeof(arr) / sizeof(int));
 
+	list2(arr, sizeof(arr) / sizeof(int));
+}
+
+void test2()
+{
+	int arr[] = {12, 122, 2, 1, 3,5,7,101,102,103,9,11,104,105,12,15,17,20,100,200};
+	list1(arr, sizeof(arr) / sizeof(int));
+
+	list2(arr, sizeof(arr) / sizeof(int));///error
+}
+
+
+void test3()
+{
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+	list1(arr, sizeof(arr) / sizeof(int));
+
+	list2(arr, sizeof(arr) / sizeof(int));
+}
+
+void test4()
+{
+	int arr[] = { 7,6,5,4,3,2,1 };
+	list1(arr, sizeof(arr) / sizeof(int));
+	list2(arr, sizeof(arr) / sizeof(int));
 }
 
 
@@ -202,6 +241,9 @@ void test1()
 int main()
 {
 	test1();
+	test2();
+	test3();
+	test4();
 
 
 
@@ -209,6 +251,7 @@ int main()
 	system("pause");
 	return 0;
 }
+
 
 
 
