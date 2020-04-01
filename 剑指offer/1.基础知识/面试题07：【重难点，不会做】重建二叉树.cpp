@@ -1,12 +1,12 @@
 /********************************
-¡¶½£Ö¸offer¡·×öÌâ±Ê¼Ç
+ã€Šå‰‘æŒ‡offerã€‹åšé¢˜ç¬”è®°
 
 
-// ÃæÊÔÌâ7£ºÖØ½¨¶ş²æÊ÷
-// ÌâÄ¿£ºÊäÈëÄ³¶ş²æÊ÷µÄÇ°Ğò±éÀúºÍÖĞĞò±éÀúµÄ½á¹û£¬ÇëÖØ½¨³ö¸Ã¶ş²æÊ÷¡£¼ÙÉèÊä
-// ÈëµÄÇ°Ğò±éÀúºÍÖĞĞò±éÀúµÄ½á¹ûÖĞ¶¼²»º¬ÖØ¸´µÄÊı×Ö¡£ÀıÈçÊäÈëÇ°Ğò±éÀúĞòÁĞ{1,
-// 2, 4, 7, 3, 5, 6, 8}ºÍÖĞĞò±éÀúĞòÁĞ{4, 7, 2, 1, 5, 3, 8, 6}£¬ÔòÖØ½¨³ö
-// Í¼2.6ËùÊ¾µÄ¶ş²æÊ÷²¢Êä³öËüµÄÍ·½áµã¡£
+// é¢è¯•é¢˜7ï¼šé‡å»ºäºŒå‰æ ‘
+// é¢˜ç›®ï¼šè¾“å…¥æŸäºŒå‰æ ‘çš„å‰åºéå†å’Œä¸­åºéå†çš„ç»“æœï¼Œè¯·é‡å»ºå‡ºè¯¥äºŒå‰æ ‘ã€‚å‡è®¾è¾“
+// å…¥çš„å‰åºéå†å’Œä¸­åºéå†çš„ç»“æœä¸­éƒ½ä¸å«é‡å¤çš„æ•°å­—ã€‚ä¾‹å¦‚è¾“å…¥å‰åºéå†åºåˆ—{1,
+// 2, 4, 7, 3, 5, 6, 8}å’Œä¸­åºéå†åºåˆ—{4, 7, 2, 1, 5, 3, 8, 6}ï¼Œåˆ™é‡å»ºå‡º
+// å›¾2.6æ‰€ç¤ºçš„äºŒå‰æ ‘å¹¶è¾“å‡ºå®ƒçš„å¤´ç»“ç‚¹ã€‚
 
 
 *******************************************/
@@ -34,7 +34,7 @@ BinaryTreeNode* Construct(int* preorder, int* inorder, int length)
 
 BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startInorder, int* endInorder)
 {
-	//Ç°Ğò±éÀúĞòÁĞµÄµÚÒ»¸öÊı×ÖÊÇ¸ù½ÚµãµÄÖµ
+	//å‰åºéå†åºåˆ—çš„ç¬¬ä¸€ä¸ªæ•°å­—æ˜¯æ ¹èŠ‚ç‚¹çš„å€¼
 	int rootValue = startPreorder[0];
 	BinaryTreeNode* root = new BinaryTreeNode();
 	root->m_nValue = rootValue;
@@ -52,7 +52,7 @@ BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startIn
 		}
 	}
 
-	//ÔÚÖĞĞò±éÀúÖĞÕÒµ½¸ù½ÚµãµÄÖµ
+	//åœ¨ä¸­åºéå†ä¸­æ‰¾åˆ°æ ¹èŠ‚ç‚¹çš„å€¼
 	int* rootInorder = startInorder;
 	while (rootInorder <= endInorder && *rootInorder != rootValue)
 	{
@@ -68,13 +68,13 @@ BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startIn
 	int *leftPreorderEnd = startPreorder + leftLength;
 	if (leftLength > 0)
 	{
-		//¹¹½¨×ó×ÓÊ÷
+		//æ„å»ºå·¦å­æ ‘
 		root->m_pLeft = ConstructCore(startPreorder + 1, leftPreorderEnd, startInorder, rootInorder - 1);
 	}
 
 	if (leftLength < endPreorder - startPreorder)
 	{
-		//¹¹½¨ÓÒ×ÓÊ÷
+		//æ„å»ºå³å­æ ‘
 		root->m_pRight = ConstructCore(leftPreorderEnd + 1, endPreorder, rootInorder + 1, endInorder);
 	}
 
@@ -82,7 +82,7 @@ BinaryTreeNode* ConstructCore(int* startPreorder, int* endPreorder, int* startIn
 }
 
 
-// ====================²âÊÔ´úÂë====================
+// ====================æµ‹è¯•ä»£ç ====================
 void Test(char* testName, int* preorder, int* inorder, int length)
 {
 	if (testName != nullptr)
@@ -111,7 +111,7 @@ void Test(char* testName, int* preorder, int* inorder, int length)
 	}
 }
 
-// ÆÕÍ¨¶ş²æÊ÷
+// æ™®é€šäºŒå‰æ ‘
 //              1
 //           /     \
 //          2       3  
@@ -128,7 +128,7 @@ void Test1()
 	Test("Test1", preorder, inorder, length);
 }
 
-// ËùÓĞ½áµã¶¼Ã»ÓĞÓÒ×Ó½áµã
+// æ‰€æœ‰ç»“ç‚¹éƒ½æ²¡æœ‰å³å­ç»“ç‚¹
 //            1
 //           / 
 //          2   
@@ -147,7 +147,7 @@ void Test2()
 	Test("Test2", preorder, inorder, length);
 }
 
-// ËùÓĞ½áµã¶¼Ã»ÓĞ×ó×Ó½áµã
+// æ‰€æœ‰ç»“ç‚¹éƒ½æ²¡æœ‰å·¦å­ç»“ç‚¹
 //            1
 //             \ 
 //              2   
@@ -166,7 +166,7 @@ void Test3()
 	Test("Test3", preorder, inorder, length);
 }
 
-// Ê÷ÖĞÖ»ÓĞÒ»¸ö½áµã
+// æ ‘ä¸­åªæœ‰ä¸€ä¸ªç»“ç‚¹
 void Test4()
 {
 	const int length = 1;
@@ -176,7 +176,7 @@ void Test4()
 	Test("Test4", preorder, inorder, length);
 }
 
-// ÍêÈ«¶ş²æÊ÷
+// å®Œå…¨äºŒå‰æ ‘
 //              1
 //           /     \
 //          2       3  
@@ -191,13 +191,13 @@ void Test5()
 	Test("Test5", preorder, inorder, length);
 }
 
-// ÊäÈë¿ÕÖ¸Õë
+// è¾“å…¥ç©ºæŒ‡é’ˆ
 void Test6()
 {
 	Test("Test6", nullptr, nullptr, 0);
 }
 
-// ÊäÈëµÄÁ½¸öĞòÁĞ²»Æ¥Åä
+// è¾“å…¥çš„ä¸¤ä¸ªåºåˆ—ä¸åŒ¹é…
 void Test7()
 {
 	const int length = 7;
