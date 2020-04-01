@@ -1,9 +1,9 @@
 /********************************
-¡¶½£Ö¸offer¡·×öÌâ±Ê¼Ç
+ã€Šå‰‘æŒ‡offerã€‹åšé¢˜ç¬”è®°
 
 
-//¶ş²æÊ÷µÄ´´½¨¡¢ºÍ´òÓ¡
-//Àí½âÒ»¿ÃÊ÷µÄ½á¹¹Ìå£¬ÈçºÎ´´½¨¡£
+//äºŒå‰æ ‘çš„åˆ›å»ºã€å’Œæ‰“å°
+//ç†è§£ä¸€æ£µæ ‘çš„ç»“æ„ä½“ï¼Œå¦‚ä½•åˆ›å»ºã€‚
 
 *******************************************/
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 using namespace std;
 
-//¶ş²æÊ÷½á¹¹Ìå
+//äºŒå‰æ ‘ç»“æ„ä½“
 struct BinaryTreeNode
 {
 	int  m_nValue;
@@ -23,7 +23,7 @@ struct BinaryTreeNode
 };
 
 
-//´´½¨Ò»¸ö¶ş²æÊ÷½Úµã
+//åˆ›å»ºä¸€ä¸ªäºŒå‰æ ‘èŠ‚ç‚¹
 BinaryTreeNode* CreateBinaryTreeNode(int value)
 {
 	BinaryTreeNode* pNode = new BinaryTreeNode();
@@ -33,7 +33,7 @@ BinaryTreeNode* CreateBinaryTreeNode(int value)
 	return pNode;
 }
 
-//½«½ÚµãºÍ×óÓÒº¢×Ó½ÚµãÁ¬½ÓÆğÀ´
+//å°†èŠ‚ç‚¹å’Œå·¦å³å­©å­èŠ‚ç‚¹è¿æ¥èµ·æ¥
 void ConnectTreeNodes(BinaryTreeNode* pParent, BinaryTreeNode* pLeft, BinaryTreeNode *pRight)
 {
 	if (pParent != nullptr)
@@ -43,7 +43,7 @@ void ConnectTreeNodes(BinaryTreeNode* pParent, BinaryTreeNode* pLeft, BinaryTree
 	}
 }
 
-//´òÓ¡½Úµã
+//æ‰“å°èŠ‚ç‚¹
 void PrintTreeNode(const BinaryTreeNode* pNode)
 {
 	if (pNode != nullptr)
@@ -76,7 +76,7 @@ void PrintTreeNode(const BinaryTreeNode* pNode)
 }
 
 
-//Ç°Ğò±éÀú£¨¸ù×óÓÒ£©´òÓ¡¶ş²æÊ÷
+//å‰åºéå†ï¼ˆæ ¹å·¦å³ï¼‰æ‰“å°äºŒå‰æ ‘
 void PrintTree(const BinaryTreeNode* pRoot)
 {
 	PrintTreeNode(pRoot);
@@ -95,7 +95,7 @@ void PrintTree(const BinaryTreeNode* pRoot)
 	}
 }
 
-//Ïú»ÙÒ»¿Ã¶ş²æÊ÷
+//é”€æ¯ä¸€æ£µäºŒå‰æ ‘
 void DestroyTree(BinaryTreeNode* pRoot)
 {
 	if (pRoot != nullptr)
@@ -114,7 +114,7 @@ void DestroyTree(BinaryTreeNode* pRoot)
 
 
 
-//===================²âÊÔ´úÂë=======================
+//===================æµ‹è¯•ä»£ç =======================
 
 //        1
 //     2     3
