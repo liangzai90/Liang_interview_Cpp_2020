@@ -1,12 +1,12 @@
 /********************************
-¡¶½£Ö¸offer¡·×öÌâ±Ê¼Ç
+ã€Šå‰‘æŒ‡offerã€‹åšé¢˜ç¬”è®°
 
 
-ÃæÊÔÌâ6£º´ÓÎ²µ½Í·´òÓ¡Á´±í
+é¢è¯•é¢˜6ï¼šä»å°¾åˆ°å¤´æ‰“å°é“¾è¡¨
 
-ÌâÄ¿£º
-ÊäÈëÒ»¸öÁ´±íµÄÍ·½áµã£¬´ÓÎ²µ½Í··´¹ıÀ´´òÓ¡³öÃ¿¸ö½ÚµãµÄÖµ¡£
-Á´±í½Úµã¶¨ÒåÈçÏÂ£º
+é¢˜ç›®ï¼š
+è¾“å…¥ä¸€ä¸ªé“¾è¡¨çš„å¤´ç»“ç‚¹ï¼Œä»å°¾åˆ°å¤´åè¿‡æ¥æ‰“å°å‡ºæ¯ä¸ªèŠ‚ç‚¹çš„å€¼ã€‚
+é“¾è¡¨èŠ‚ç‚¹å®šä¹‰å¦‚ä¸‹ï¼š
 struct ListNode
 {
 int m_nKey;
@@ -14,8 +14,8 @@ ListNode* m_pNext;
 };
 
 
-½â·¨1£ºÀûÓÃstack
-½â·¨2£ºµİ¹éÊä³ö£¨Èç¹ûÁ´±íÌ«³¤£¬µİ¹é»áµ¼ÖÂº¯Êıµ÷ÓÃÕ»Òç³ö£©
+è§£æ³•1ï¼šåˆ©ç”¨stack
+è§£æ³•2ï¼šé€’å½’è¾“å‡ºï¼ˆå¦‚æœé“¾è¡¨å¤ªé•¿ï¼Œé€’å½’ä¼šå¯¼è‡´å‡½æ•°è°ƒç”¨æ ˆæº¢å‡ºï¼‰
 
 *******************************************/
 
@@ -25,7 +25,7 @@ ListNode* m_pNext;
 #include "List.h"
 using namespace std;
 
-/// µİ¹éÊµÏÖ´òÓ¡
+/// é€’å½’å®ç°æ‰“å°
 void PrintListReversingly_Recursively(ListNode* pHead)
 {
 	if (pHead != nullptr)
@@ -39,7 +39,7 @@ void PrintListReversingly_Recursively(ListNode* pHead)
 }
 
 
-////ÀûÓÃstackÊµÏÖ´òÓ¡
+////åˆ©ç”¨stackå®ç°æ‰“å°
 void PrintListReversingly_Iteratively(ListNode* pHead)
 {
 	std::stack<ListNode*> nodes;
@@ -60,7 +60,7 @@ void PrintListReversingly_Iteratively(ListNode* pHead)
 }
 
 
-////======================²âÊÔ´úÂë=======================
+////======================æµ‹è¯•ä»£ç =======================
 void Test(ListNode* pHead)
 {
 	PrintList(pHead);
@@ -89,7 +89,7 @@ void Test1()
 	DestroyList(pNode1);
 }
 
-///Ö»ÓĞÒ»¸ö½Úµã
+///åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹
 void Test2()
 {
 	printf("\r\nTest2 begins. \r\n");
@@ -98,7 +98,7 @@ void Test2()
 	DestroyList(pNode1);
 }
 
-//¿ÕÁ´±í
+//ç©ºé“¾è¡¨
 void Test3()
 {
 	printf("\r\nTest3 begins.\r\n");
