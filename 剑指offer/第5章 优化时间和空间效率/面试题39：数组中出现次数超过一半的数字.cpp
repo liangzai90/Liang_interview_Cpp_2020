@@ -67,7 +67,7 @@ int Partition(int data[], int length, int start, int end)
 
 
 bool g_bInputInvalid = false;
-
+//判断数组合法性
 bool CheckInvalidArray(int* numbers, int length)
 {
     g_bInputInvalid = false;
@@ -76,6 +76,7 @@ bool CheckInvalidArray(int* numbers, int length)
     return g_bInputInvalid;
 }
 
+//判断是否超过了一半 *** 这个 判断 很容易漏掉 ***
 bool CheckMoreThenHalf(int* numbers, int length, int number)
 {
     int times = 0;
@@ -123,6 +124,7 @@ int MoreThanHalfNum_Solution1(int* numbers, int length)
     }
 
     int result = numbers[middle];
+	//是否超过了一半
     if (!CheckMoreThenHalf(numbers, length, result))
         result = 0;
 
