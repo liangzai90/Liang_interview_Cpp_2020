@@ -67,18 +67,25 @@ int getValueOfIndexN(int N)
 		startIndex = endIndex + 1;
 		endIndex = (end - start +1)*level + endIndex;
 	}
-
-	int leftValue = N - startIndex;
-	int numA = leftValue / level + start; //是哪个数
-	int numB = leftValue % level;//该数的第几位。从0开始计数的
+	/*
+	level =1, start:0,          end:9
+			 startIndex:0,     endIndex:9
+--------------------------------------------------
+	level =2, start:10,         end:99
+			 startIndex:10,    endIndex: 189 = endIndex = (end - start +1)*level + endIndex;
+--------------------------------------------------
+	level =3, start:100,        end:999
+			 startIndex:190,   endIndex:1989
+--------------------------------------------------
+	*/
+	int leftGap = N - startIndex;
+	int numA = leftGap / level + start; //是哪个数
+	int numB = leftGap % level;//该数的第几位。从0开始计数的
 
 	int iResult = getValueOfNumIndex(numA, numB);
 
 	return getValueOfNumIndex(numA, numB);
 }
-
-
-
 
 //======================测试代码
 void test(const char* testName, int inputIndex, int expectedOutput)
@@ -89,6 +96,12 @@ void test(const char* testName, int inputIndex, int expectedOutput)
 		cout << testName << " **FAILED**.." << endl;
 }
 
+/*
+这一题的测试用例非常重要！！！！
+各种边界条件测试
+为0的情况，为1的情况，为9的情况，为10的情况，
+99，,100，等等。通过边界测试，会发现自己代码的很多漏洞。。
+*/
 void test()
 {
 	int a = getValueOfNumIndex(10, 1);
@@ -107,15 +120,93 @@ void test()
 
 
 
+//================ 下面的解法，是作者的 ====================
+int countOfIntegers(int digits);
+int digitAtIndex(int index, int digits);
+int beginNumber(int digits);
+
+int digitAtIndex(int index)
+{
+	if (index < 0)
+		return -1;
+
+	int digits = 1;
+	while (true)
+	{
+		int numbers = countOfIntegers(digits);
+		if (index < numbers * digits)
+			return digitAtIndex(index, digits);
+
+		index -= digits * numbers;
+		digits++;
+	}
+	return -1;
+}
+
+//10, 90, 900
+int countOfIntegers(int digits)
+{
+	if (digits == 1)
+		return 10;
+
+	int count = (int)std::pow(10, digits - 1);
+	return 9 * count;
+}
+
+
+//这里的index，相当于是一个偏移量了。
+//0, 10, 190...
+int digitAtIndex(int index, int digits)
+{
+	//该索引落在 哪个 数字 上 .
+	int number = beginNumber(digits) + index / digits;
+	int indexFromRight = digits - index % digits;
+	for (int i = 1; i < indexFromRight; ++i)
+	{
+		number /= 10;//12345
+	}
+
+	return number % 10;
+}
+
+//0, 10, 100, 1000
+int beginNumber(int digits)
+{
+	if (digits == 1)
+		return 0;
+
+	return (int)std::pow(10, digits - 1);
+}
+
+void test2(const char* testName, int inputIndex, int expectedOutput)
+{
+	if (digitAtIndex(inputIndex) == expectedOutput)
+		cout << testName << " passed. " << endl;
+	else
+		cout << testName << " FAILED***** " << endl;
+}
+
+void test2()
+{
+	int a = getValueOfNumIndex(10, 1);
+	test2("Test1", 0, 0);
+	test2("Test2", 1, 1);
+	test2("Test3", 9, 9);
+	test2("Test4", 10, 1);
+	test2("Test5", 189, 9);  // 数字99的最后一位，9
+	test2("Test6", 190, 1);  // 数字100的第一位，1
+	test2("Test7", 1000, 3); // 数字370的第一位，3
+	test2("Test8", 1001, 7); // 数字370的第二位，7
+	test2("Test9", 1002, 0); // 数字370的第三位，0
+}
+
+
 int main(int argc, char* argv[])
 {
 	test();
-
+	test2();
 
 	cout << endl;
 	system("pause");
 	return 0;
 }
-
-
-
