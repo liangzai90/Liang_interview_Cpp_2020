@@ -121,7 +121,7 @@ int NumberOf1(const char* strN)
 
 
 
-	//******* 这一部分，理解比较困难 *******
+	//******* 这一部分，理解比较困难 ******* 
 	//numOtherDigits 是 01346-21345 除了第一位（比如，这里是万位）之外的数位中，1的数目
 	int numOtherDigits = first * (length - 1) * PowerBase10(length - 2);
 
