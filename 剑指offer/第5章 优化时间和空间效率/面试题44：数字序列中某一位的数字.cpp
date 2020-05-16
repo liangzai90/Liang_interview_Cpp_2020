@@ -69,20 +69,18 @@ int getValueOfIndexN(int N)
 	}
 	/*
 	level =1, start:0,          end:9
-			 startIndex:0,     endIndex:9
+                  startIndex:0,     endIndex:9
 --------------------------------------------------
 	level =2, start:10,         end:99
-			 startIndex:10,    endIndex: 189 = endIndex = (end - start +1)*level + endIndex;
+		  startIndex:10,    endIndex: 189 = (end - start +1)*level + endIndex;
 --------------------------------------------------
 	level =3, start:100,        end:999
-			 startIndex:190,   endIndex:1989
+		  startIndex:190,   endIndex:1989
 --------------------------------------------------
 	*/
 	int leftGap = N - startIndex;
 	int numA = leftGap / level + start; //是哪个数
 	int numB = leftGap % level;//该数的第几位。从0开始计数的
-
-	int iResult = getValueOfNumIndex(numA, numB);
 
 	return getValueOfNumIndex(numA, numB);
 }
