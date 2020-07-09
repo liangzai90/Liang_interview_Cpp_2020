@@ -103,8 +103,113 @@ public:
 // };
 
 
-作者：henryheliang
-链接：https://leetcode-cn.com/problems/re-space-lcci/solution/mian-shi-ti-1713-hui-fu-kong-ge-by-henryheliang/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
+
+
+
+
+/*******************************下面的for循环+递归，也超时了。不过，可以学习代码的结题思路。这是我自己写的。
+测试用例：
+["potimzz"]
+"potimzzpotimzz"
+
+边界条件不可少
+[]
+""
+
+[]
+"abc"
+
+["a"]
+""
+
+解答错误了
+
+["aaysaayayaasyya","yyas","yayysaaayasasssy","yaasassssssayaassyaayaayaasssasysssaaayysaaasaysyaasaaaaaasayaayayysasaaaa","aya","sya","ysasasy","syaaaa","aaaas","ysa","a","aasyaaassyaayaayaasyayaa","ssaayayyssyaayyysyayaasaaa","aya","aaasaay","aaaa","ayyyayssaasasysaasaaayassasysaaayaassyysyaysaayyasayaaysyyaasasasaayyasasyaaaasysasy","aaasa","ysayssyasyyaaasyaaaayaaaaaaaaassaaa","aasayaaaayssayyaayaaaaayaaays","s"]
+"asasayaayaassayyayyyyssyaassasaysaaysaayaaaaysyaaaa"
+
+
+["ouf","uucuocucoouoffcpuuf","pf","o","fofopupoufuofffffocpocfccuofuupupcouocpocoooupcuu","cf","cffooccccuoocpfupuucufoocpocucpuouofffpoupu","opoffuoofpupcpfouoouufpcuocufo","fopuupco","upocfucuucfucofufu","ufoccopopuouccupooc","fffu","uuopuccfocopooupooucfoufop","occ","ppfcuu","o","fpp","o","oououpuccuppuococcpoucccffcpcucoffupcoppoc","ufc","coupo","ufuoufofopcpfoufoouppffofffuupfco","focfcfcfcfpuouoccupfccfpcooup","ffupfffccpffufuuo","cufoupupppocou","upopupopccffuofpcopouofpoffopcfcuooocppofofuuc","oo","pccc","oupupcccppuuucuuouocu","fuop","ppuocfuppff","focofooffpfcpcupupuuooufu","uofupoocpf","opufcuffopcpcfcufpcpufuupffpp","f","opffp","fpccopc"]
+"fofopupoufuofffffocpocfccuofuupupcouocpocoooupcuufffufffufpccopc"
+
+*******************************/
+// 从长到短，排序dic里面的字符数组
+static bool sortDic(string& A, string& B)
+{
+    if(A.length()> B.length())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+class Solution {
+public:
+    //寻找非#字符个数
+    int getSentenceLength(string str)
+    {
+        int index = 0;
+        int iLength = 0;
+        while(index<str.length())
+        {
+            if(str[index]!='#')
+            {
+                iLength++;
+            }
+            index++;
+        }
+        return iLength;
+    }
+
+    void mathCore(vector<string>& dictionary, string sentence,int index, int& MinNums)
+    {
+        if(index>=dictionary.size())
+        {
+            if(MinNums> getSentenceLength(sentence))
+            {
+                MinNums = getSentenceLength(sentence);
+                printf("size(%d),str:%s \r\n",getSentenceLength(sentence), sentence.c_str());
+            }
+            return;
+        }
+        size_t Found = sentence.find(dictionary[index]);
+        if(Found != string::npos)
+        {
+            //printf("str(%s),DicIndex:%d,Found Pos:%d\r\n",dictionary[index].c_str(),index, Found);
+            //printf("=====out:%s \r\n",sentence.substr(Found,dictionary[index].size()).c_str());
+            sentence.replace(sentence.begin()+Found,sentence.begin()+Found+dictionary[index].size(),"#");
+            mathCore(dictionary,sentence,index,MinNums);
+        }
+        mathCore(dictionary,sentence,index+1,MinNums);
+    }
+
+    int respace(vector<string>& dictionary, string sentence) {
+        if(dictionary.empty())
+        {
+            return sentence.length();
+        }
+        if(sentence.length() ==0)
+        {
+            return 0;
+        }
+        if(dictionary.size()>=2)
+        {
+            sort(dictionary.begin(), dictionary.end(), sortDic);
+        }
+        // printf("===============print sorted dic=============\r\n");
+        // for(int i=0;i<dictionary.size();++i)
+        // {
+        //     printf("Dic[%d]:(%s)\r\n",i,dictionary[i].c_str());
+        // }
+        // printf("===============print sorted dic End =============\r\n");
+        int iMinNums = sentence.length();
+        for(int i=0;i<dictionary.size();++i)
+        {
+            //  mathCore(dictionary,sentence,i,iMinNums);
+        }
+        mathCore(dictionary,sentence,0,iMinNums);
+        return iMinNums;
+    }
+};
