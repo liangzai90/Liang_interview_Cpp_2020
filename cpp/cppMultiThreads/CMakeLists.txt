@@ -18,4 +18,6 @@ set(LIB_LIB
 
 add_subdirectory(thread_001)
 add_subdirectory(thread_002)
+add_subdirectory(thread_003)
+add_subdirectory(thread_004)
 
