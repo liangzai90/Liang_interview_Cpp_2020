@@ -3,6 +3,8 @@
 #include <string>
 #include <mutex>
 
+//RAII 创建一个 RAII 对象，来管理锁的生命周期
+
 class XMutex{
 public:
     // 在构造函数初始化列表初始化 引用变量

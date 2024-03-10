@@ -22,4 +22,7 @@ add_subdirectory(thread_003)
 add_subdirectory(thread_004)
 add_subdirectory(thread_005)
 add_subdirectory(thread_006)
+add_subdirectory(thread_007)
+add_subdirectory(thread_008)
+add_subdirectory(thread_009)
 
