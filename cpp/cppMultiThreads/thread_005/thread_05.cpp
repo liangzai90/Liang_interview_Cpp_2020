@@ -5,6 +5,7 @@
 
 static std::mutex mux;
 
+//try_lock()的一个坑.try_lock() 是有资源开销的,因此try_lock失败之后，sleep一段时间很有必要。
 void TestThread(){
     for(;;){
 

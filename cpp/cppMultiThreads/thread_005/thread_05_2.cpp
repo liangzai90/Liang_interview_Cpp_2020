@@ -5,6 +5,7 @@
 
 static std::mutex mux;
 
+// 互斥锁的一个坑， 在 unlock()之后，需要sleep一小会，让其他线程有机会获取锁资源
 void ThreadMainMux(int i){
     for(;;){
         mux.lock();

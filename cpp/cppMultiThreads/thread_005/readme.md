@@ -94,3 +94,139 @@ void ThreadMainMux(int i){
 ```
 
 
+### 超时锁 timed_mutex
+
+超时锁应用 timed_mutex （避免长时间死锁）
+
+ * 超时锁 timed_mutex
+可记录锁的情况，多次超时，可以记录日志，获取错误情况。
+
+
+验证 超时锁( try_lock_for(超时时间) )
+```cpp
+//验证 超时锁
+std::timed_mutex tmux;
+void ThreadMainTime(int i){
+    for(;;){
+        if(!tmux.try_lock_for(std::chrono::milliseconds(500))){
+            std::cout<< i <<" [try_lock_for timeout] "<<std::endl;
+            continue;
+        }
+        std::cout<< i <<" [in] "<<std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        tmux.unlock();
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+    }
+}
+```
+
+
+### 可重入锁 recursive_mutex
+ recursive_mutex 递归锁，可以被同一个线程多次调用，但是不能被其他线程调用。
+ recursive_mutex, recursive_timed_mutex,用于业务组合.
+ 
+ * 可重入锁 recursive_mutex
+
+
+```cpp
+// 验证递归锁
+std::recursive_mutex rmux;
+void Task1(){
+    rmux.lock();
+    std::cout<<" task1 [in] "<<std::endl;
+    rmux.unlock();
+}
+
+void Task2(){
+    rmux.lock();
+    std::cout<<" task2 [in] "<<std::endl;
+    rmux.unlock();
+}
+
+void ThreadMainRec(int i){
+    for(;;){
+        rmux.lock();
+        Task1();
+        std::cout<< i <<"[in]"<<std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
+        Task2();
+        rmux.unlock();
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+    }
+}
+```
+
+
+
+### 共享锁 shared_mutex 
+
+ * C++14 共享超时锁 shared_timed_mutex
+ * C++17 共享互斥锁 shared_mutex
+ * 如果只有写时需要互斥，读取时不需要，用普通的锁如何做？
+ * 按照下面的代码，读取只能有一个线程进入，在很多业务场景中，没有充分利用CPU资源
+
+```cpp
+// 读取 同时只能有一个线程
+mux.lock();
+cout<<share<<endl;
+mux.unlock();
+
+// 写入 
+mux.lock();
+share++;
+mux.unlock();
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

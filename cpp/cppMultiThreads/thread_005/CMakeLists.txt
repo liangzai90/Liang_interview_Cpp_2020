@@ -13,4 +13,10 @@ add_executable(thread_05_2 thread_05_2.cpp)
 # 链接需要的库
 target_link_libraries(thread_05_2 ${LIB_LIB})
 
+# 添加可执行文件
+add_executable(thread_05_3 thread_05_3.cpp)
+# 链接需要的库
+target_link_libraries(thread_05_3 ${LIB_LIB})
+
+
 

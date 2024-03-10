@@ -2,6 +2,7 @@
 #include <thread>
 #include <string>
 
+//验证lambda表达式的用法
 class TestLambda{
 public:
     void Start(){
