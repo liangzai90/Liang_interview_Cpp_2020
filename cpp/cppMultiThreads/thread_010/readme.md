@@ -60,10 +60,52 @@ C++11 异步运行一个函数，并返回保有其结果的 std::future 对象�
  * 返回的线程函数的返回值类型为 std::future<T>，T 为函数的返回值类型
  * re.get()获取结果，会阻塞等待
 
+launch::deferred 没有创建线程
+
+launch::async 创建了线程
+
 ### 异步操作结果 获取 future 
 
+代码示例：
+
+```cpp
+std::string TestAsync(int index){
+    std::cout<< index <<" begin in TestAsync"<<std::this_thread::get_id()<<std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    return "TestAsync string return..";
+}
+
+int main(int argc, char* argv[]){
+    std::cout<<"main thread id is "<<std::this_thread::get_id()<<std::endl;
+
+    //不创建线程 启动异步任务
+    auto future = std::async(std::launch::deferred,TestAsync,123);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));   
+    std::cout<<" future.get() = "<<future.get() <<std::endl;
+
+    //创建异步线程
+    std::cout<<" ======= 创建异步线程 ======" <<std::endl;
+    auto future2 = std::async(TestAsync, 10086);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::cout<<" future2.get() = "<<future2.get() <<std::endl;
+}
+```
 
 
+## C++17 多核并行计算
+### 手动实现 base16 编码
+    二进制转换为字符串
+    一个字节8位，拆分为两个四位字节（最大值16）
+    拆分后的字节映射到 0123456789abcdef 
+
+```cpp
+
+```
+
+### c++11实现 base16 多线程编码
+
+
+### C++17 for_each 实现多核并行计算 base16 编码
 
 
 

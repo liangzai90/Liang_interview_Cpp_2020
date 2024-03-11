@@ -12,3 +12,15 @@ target_link_libraries(thread_10 ${LIB_LIB})
 
 add_executable(thread_10_2 ./thread_10_2.cpp)
 target_link_libraries(thread_10_2 ${LIB_LIB})
+
+add_executable(thread_10_3 ./thread_10_3.cpp)
+target_link_libraries(thread_10_3 ${LIB_LIB})
+
+add_executable(thread_10_4 ./thread_10_4.cpp)
+target_link_libraries(thread_10_4 ${LIB_LIB})
+
+add_executable(thread_10_5 ./thread_10_5.cpp)
+target_link_libraries(thread_10_5 ${LIB_LIB})
+
+
+
