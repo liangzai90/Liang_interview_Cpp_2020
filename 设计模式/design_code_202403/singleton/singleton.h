@@ -4,13 +4,8 @@
 
 class Singleton
 {
-public:
     // 定义类的静态指针，和一个静态函数。
-    // 私有化  构造函数、析构函数、构造复制、重载赋值语句.线程安全，采用互斥体的方式实现.
-    Singleton(){ std::cout<<" construct singleton"<<std::endl;};
-    virtual ~Singleton(){};
-
-    
+public:    
     // 静态成员函数，提供全局访问的接口
     static Singleton* GetInstancePtr();
  
@@ -22,8 +17,12 @@ private:
     static Singleton* m_pStatic;
     int m_value;
 
-    Singleton& operator=(const Singleton& ) = delete; 
+    // 将构造函数和析构函数设为私有，防止外部创建和删除对象
+    Singleton() {}
+    ~Singleton() {}
+    // 禁止复制和赋值操作，确保只有一个实例
     Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
  };
 
 

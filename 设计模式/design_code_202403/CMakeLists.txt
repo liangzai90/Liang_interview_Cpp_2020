@@ -19,7 +19,7 @@ set(LIB_LIB
 
 ## 单例模式
 add_subdirectory(singleton)
-add_subdirectory(singleton2)
+add_subdirectory(singleton_thread_safe)
 
 
 
