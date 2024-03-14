@@ -30,6 +30,9 @@ add_subdirectory(adapter)
 ## 桥接模式
 add_subdirectory(bridge)
 
+## 建造者模式
+add_subdirectory(builder)
+
 
 
 

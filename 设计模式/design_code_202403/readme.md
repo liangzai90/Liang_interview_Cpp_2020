@@ -1,40 +1,86 @@
 ## 设计模式
 
 
+
 ### 创建型设计模式
 
-[单例模式](./singleton/readme.md)
+[单例模式（Singleton Pattern）](./singleton/readme.md)
+确保一个类仅有一个实例，并提供一个全局访问点
 
-[单例模式(线程安全版本)](./singleton_thread_safe/readme.md)
+[单例模式（Singleton Pattern）(线程安全版本)](./singleton_thread_safe/readme.md)
+确保一个类仅有一个实例，并提供一个全局访问点
 
-[抽象工厂模式](./abstract_factory/readme.md)
+[抽象工厂模式（Abstract Factory Pattern）](./abstract_factory/readme.md)
+提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。
 
+[建造型模式（Builder Pattern）](./builder/readme.md)
+将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+
+[工厂方法模式（Factory Method Pattern）](./factory_method/readme.md)
+定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。
+
+[原型模式（Prototype Pattern）](./prototype/readme.md)
+用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。
 
 
 ### 结构型设计模式
 
-[代理模式](./proxy/readme.md)
-[适配器模式](./adapter/readme.md)
-[桥接模式](./bridge/readme.md)
+[代理模式（Proxy Pattern）](./proxy/readme.md)
+为其他对象提供一个代理以控制对这个对象的访问。
+
+[适配器模式（Adapter Pattern）](./adapter/readme.md)
+将一个类的接口转换成客户期望的另一个接口。适配器模式使得原本由于接口不兼容而无法协同工作的类可以一起工作。
+
+[桥接模式（Bridge Pattern）](./bridge/readme.md)
+将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+
+[组合模式（Composite Pattern）](./composite/readme.md)
+将对象组合成树形结构以表示“部分-整体”的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。
+
+[装饰器模式（Decorator Pattern）](./decorator/readme.md)
+动态地给一个对象添加一些额外的职责。就增加功能来说，装饰器模式相比生成子类更为灵活。
+
+[外观模式（Facade Pattern）](./facade/readme.md)
+为子系统中的一组接口提供了一个统一的接口，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。
+
+[享元模式（Flyweight Pattern）](./flyweight/readme.md)
+运用共享技术有效地支持大量细粒度的对象。
+
 
 
 ### 行为型设计模式
+[模板方法模式（Template Method Pattern）](./template/readme.md)
+定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重新定义该算法的某些特定步骤。
 
+[观察者模式（Observer Pattern）](./observer/readme.md)
+定义对象之间的一对多依赖关系，以便当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。
 
+[迭代器模式（Iterator Pattern）](./iterator/readme.md)
+它提供一种方法顺序访问一个聚合对象中各个元素，而又不需暴露该对象的内部表示。
 
+[状态模式（State Pattern）](./state/readme.md)
+允许一个对象在其内部状态改变时改变它的行为。对象看起来好像修改了它的类。
 
-## 设计模式的分类
-设计模式是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。设计模式有很多种类型，除了创建型设计模式之外，还有结构型设计模式、行为型设计模式。下面是这些类型的设计模式的详细解释和分类：
+[策略模式（Strategy Pattern）](./strategy/readme.md)
+定义一系列的算法，并把它们一个个封装起来，并且使它们可相互替换。策略模式使得算法可以独立于使用它的客户变化。
 
- 1. 创建型设计模式：用于创建对象。
-   包括工厂模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+[职责链模式（Chain of Responsibility Pattern）](./chain_of_responsibility/readme.md)
+使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
 
- 2. 结构型设计模式：用于处理类或对象的组合。
-   包括适配器模式、桥接模式、装饰器模式、外观模式、享元模式、代理模式。
-   
- 3. 行为型设计模式：用于描述类或对象之间的交互和职责分配
-   包括责任链模式、命令模式、解释器模式、迭代器模式、中介者模式、备忘录模式、观察者模式、状态模式、策略模式、模板方法模式、访问者模式。
+[命令模式（Command Pattern）](./command/readme.md)
+将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
 
-这些设计模式的分类是基于它们的目的和功能。每种设计模式都有其特定的应用场景和优势，可以帮助开发者更好地组织和管理代码，提高代码的可维护性和可扩展性。
+[访问者模式（Visitor Pattern）](./visitor/readme.md)
+表示一个作用于某对象结构中的各元素的操作。它使你可以在不改变各元素的类的前提下定义作用于这些元素的新操作。
+
+[解释器模式（Interpreter Pattern）](./interpreter/readme.md)
+给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子。
+
+[中介者模式（Mediator Pattern）](./mediator/readme.md)
+用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
+
+[备忘录模式（Memento Pattern）](./memento/readme.md)
+在不破坏封装性的前提下，捕获一个对象的内部状态，并在对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。
+
 
 

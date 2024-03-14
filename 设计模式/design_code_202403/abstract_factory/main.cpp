@@ -15,11 +15,12 @@ void test1(){
     delete pProductA;
     delete pFactory2;
     delete pProductB;
-
 }
+
 int main()
 {
     test1();
+
 
     getchar();
     return 0;

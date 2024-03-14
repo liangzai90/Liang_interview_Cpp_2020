@@ -1,6 +1,6 @@
-## 适配器模式 (Adapter Pattern)
+## 适配器模式 (Adapter Pattern)---结构型模式
 
-Adapter模式也叫适配器模式，是构造型模式之一，通过Adapter模式可以改变已有类（或外部类）的接口形式。
+适配器模式（Adapter Pattern）：将一个类的接口转换成客户期望的另一个接口。适配器模式使得原本由于接口不兼容而无法协同工作的类可以一起工作。
 
 
 ### 适配器模式应用场景
@@ -93,4 +93,102 @@ pTarget->Request();
 ### 七、总结
 适配器模式是一种非常实用的设计模式，它可以帮助我们解决接口不兼容的问题，提高代码的复用性和灵活性。在实际开发中，我们可以根据具体的需求选择使用类适配器模式或对象适配器模式，以达到最佳的效果。
 
+
+
+
+----------------------
+
+以下内容由 chatgpt 生成
+
+
+适配器模式是一种结构型设计模式，它允许将一个类的接口转换成客户端期望的另一个接口。适配器通常用于解决两个已有接口之间不兼容的情况，使得它们能够协同工作。
+
+### 1.角色
+
+ * **目标接口（Target）**：客户端期望的接口，适配器将原始接口转换为目标接口。
+ * **适配器（Adapter）**：实现目标接口，并维护一个指向被适配对象的引用。
+ * **被适配对象（Adaptee）**：需要被适配的类，它定义了不兼容的接口。
+
+### 2.结构
+
+```lua
+    +--------------+              +-------------+
+    |    Target    |<-------------|   Adapter   |
+    +--------------+              +-------------+
+            |                              |
+            |                              |
+            +-------------+                |
+                          |                |
+                          |                |
+                     +---------+           |
+                     | Adaptee |<----------+
+                     +---------+
+
+```
+
+### 3. 实现示例
+
+让我们通过一个简单的示例来说明适配器模式。假设我们有一个音乐播放器，它能够播放MP3格式的音乐，但我们希望能够播放其他格式的音乐，例如MP4格式。我们可以使用适配器模式来创建一个适配器，将MP4格式音乐的播放方法转换为MP3格式音乐的播放方法。
+
+```cpp
+#include <iostream>
+#include <memory>
+
+// 目标接口
+class MediaPlayer {
+public:
+    virtual void play() const = 0;
+    virtual ~MediaPlayer() {}
+};
+
+// 具体目标类 - MP3播放器
+class MP3Player : public MediaPlayer {
+public:
+    void play() const override {
+        std::cout << "Playing MP3 Music" << std::endl;
+    }
+};
+
+// 被适配对象 - MP4播放器
+class MP4Player {
+public:
+    void playMP4() const {
+        std::cout << "Playing MP4 Music" << std::endl;
+    }
+};
+
+// 适配器
+class MP4Adapter : public MediaPlayer {
+private:
+    std::shared_ptr<MP4Player> mp4Player;
+public:
+    MP4Adapter(std::shared_ptr<MP4Player> player) : mp4Player(player) {}
+
+    void play() const override {
+        mp4Player->playMP4();
+    }
+};
+
+int main() {
+    // 使用智能指针创建具体目标对象
+    auto mp3Player = std::make_shared<MP3Player>();
+
+    // 使用智能指针创建被适配对象
+    auto mp4Player = std::make_shared<MP4Player>();
+
+    // 使用适配器将MP4播放器适配成MediaPlayer接口
+    auto mp4Adapter = std::make_shared<MP4Adapter>(mp4Player);
+
+    // 使用MediaPlayer接口播放音乐
+    mp3Player->play();
+    mp4Adapter->play();
+
+    return 0;
+}
+
+```
+
+在这个示例中，MediaPlayer是目标接口，定义了播放音乐的方法。MP3Player是具体目标类，它实现了MediaPlayer接口。MP4Player是被适配对象，它定义了MP4格式音乐的播放方法。MP4Adapter是适配器，它继承了MediaPlayer接口并将MP4Player的方法转换为目标接口的方法。
+
+通过适配器模式，我们成功地将MP4播放器适配成了能够使用MediaPlayer接口的对象，使得客户端代码可以统一地使用MediaPlayer接口来播放音乐，而不必关心具体的音乐格式。
 
