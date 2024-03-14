@@ -49,7 +49,7 @@
 
 
 ### 行为型设计模式
-[模板方法模式（Template Method Pattern）](./template/readme.md)
+[模板方法模式（Template Method Pattern）](./template_method/readme.md)
 定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重新定义该算法的某些特定步骤。
 
 [观察者模式（Observer Pattern）](./observer/readme.md)
@@ -67,7 +67,7 @@
 [职责链模式（Chain of Responsibility Pattern）](./chain_of_responsibility/readme.md)
 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。
 
-[命令模式（Command Pattern）](./command/readme.md)
+[命令模式（Command Pattern）](./command_d/readme.md)
 将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。
 
 [访问者模式（Visitor Pattern）](./visitor/readme.md)
