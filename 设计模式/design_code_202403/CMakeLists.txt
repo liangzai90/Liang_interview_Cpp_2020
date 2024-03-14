@@ -17,9 +17,18 @@ set(LIB_LIB
     pthread
     )
 
-## 单例模式
+## 单例模式 (Singleton Pattern)
 add_subdirectory(singleton)
 add_subdirectory(singleton_thread_safe)
+
+## 抽象工厂模式（Abstract Factory Pattern）--- 创建新设计模式
+add_subdirectory(abstract_factory)
+
+## 适配器模式
+add_subdirectory(adapter)
+
+## 桥接模式
+add_subdirectory(bridge)
 
 
 
