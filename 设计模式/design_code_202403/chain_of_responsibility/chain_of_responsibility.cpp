@@ -33,10 +33,11 @@ void ConcreateHandler1::HandleRequest()
     if (NULL != m_pSuccessor)
     {
         m_pSuccessor->HandleRequest();
+        cout << "HandleRequest by ConcreateHandler1." << endl;
     }
     else
     {
-        cout << "HandleRequest by ConcreateHandler1." << endl;
+        cout << "ConcreateHandler1 m_pSuccessor is nullptr" << endl;
     }
 }
 
@@ -53,11 +54,12 @@ void ConcreateHandler2::HandleRequest()
 {
     if (NULL != m_pSuccessor)
     {
-        m_pSuccessor->HandleRequest();
+        m_pSuccessor->HandleRequest(); 
+        cout << "HandleRequest by ConcreateHandler2." << endl;
     }
     else
     {
-        cout << "HandleRequest by ConcreateHandler2." << endl;
+        cout << "ConcreateHandler2 m_pSuccessor is nullptr" << endl;
     }
 }
 
@@ -75,10 +77,11 @@ void ConcreateHandler3::HandleRequest()
     if (NULL != m_pSuccessor)
     {
         m_pSuccessor->HandleRequest();
+        cout << "HandleRequest by ConcreateHandler3." << endl;
     }
     else
     {
-        cout << "HandleRequest by ConcreateHandler3." << endl;
+        cout << "ConcreateHandler3 m_pSuccessor is nullptr" << endl;
     }
 }
 
@@ -96,10 +99,11 @@ void ConcreateHandler4::HandleRequest()
     if (NULL != m_pSuccessor)
     {
         m_pSuccessor->HandleRequest();
+        cout << "HandleRequest by ConcreateHandler4." << endl;
     }
     else
     {
-        cout << "HandleRequest by ConcreateHandler4." << endl;
+        cout << "ConcreateHandler4 m_pSuccessor is nullptr" << endl;
     }
 }
 

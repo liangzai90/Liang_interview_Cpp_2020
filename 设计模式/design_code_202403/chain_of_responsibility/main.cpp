@@ -18,6 +18,8 @@ void test1(){
 
     p4->HandleRequest();
 
+    cout << "-------------------------" << endl;
+
     delete p1;
     delete p4;
 
