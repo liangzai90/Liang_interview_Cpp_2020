@@ -8,21 +8,15 @@ using namespace std;
 // Component 
 //-----------------------------------------------
 void Component::Add(Component* pChild)
-{
-    // 
-}
+{ }
 
 void Component::Remove(Component* pChild)
-{
-    // 
-}
+{ }
 
 Component* Component::GetChild(int nIndex)
 {
     return NULL;
 }
-
-
 
 //-----------------------------------------------
 // Leaf
@@ -31,8 +25,6 @@ void Leaf::Operation()
 {
     cout << "Operation by Leaf." << endl;
 }
-
-
 
 //-----------------------------------------------
 // Composite

@@ -47,7 +47,4 @@ private:
     std::list<Component*>  m_ListOfComponent;
 };
 
-
-
-
 #endif 

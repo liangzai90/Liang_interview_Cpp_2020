@@ -11,6 +11,7 @@ void test1(){
     pComposite->Add(pLeaf1);
     pComposite->Add(pLeaf2);
     pComposite->Operation();
+    std::cout<<"--------------"<<std::endl;
     pComposite->GetChild(2)->Operation();
 
     delete pComposite;
