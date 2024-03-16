@@ -98,7 +98,16 @@ int main(int argc, char* argv[]){
     一个字节8位，拆分为两个四位字节（最大值16）
     拆分后的字节映射到 0123456789abcdef 
 
+获取时间间隔
+
 ```cpp
+auto start2 = std::chrono::system_clock::now();
+auto end2 = std::chrono::system_clock::now();
+auto iMilliseconds2 = std::chrono::duration_cast<std::chrono::milliseconds>(end2-start2).count();
+
+std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+std::chrono::steady_clock::time_point end   = std::chrono::steady_clock::now();
+auto iMilliseconds =  std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
 
 ```
 

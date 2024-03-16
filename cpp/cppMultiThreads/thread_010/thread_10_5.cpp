@@ -2,7 +2,7 @@
 #include <string>
 
 
-// base16 编码 和 解码
+//C++11风格 base16 编码 和 解码
 const std::string base16 = "0123456789ABCDEF";
 
 void Base16Encode(const std::string& data, std::string& out) {

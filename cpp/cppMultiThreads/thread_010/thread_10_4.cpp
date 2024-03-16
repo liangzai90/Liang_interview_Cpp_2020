@@ -7,6 +7,8 @@
 
 static const char base16[] = "0123456789abcdef";
 
+
+// base16 编码 和 解码
 void Base16Encode(const unsigned char* data, int size, unsigned char* out){
     for(int i=0; i<size; i++){
         unsigned char d = data[i];
@@ -58,12 +60,17 @@ int main(int argc, char* argv[]) {
         std::vector<unsigned char> out_data;
         out_data.resize(in_data.size() * 2);
         std::cout<<"开始计算"<<std::endl;
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+        
+        //std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+        auto start2 = std::chrono::system_clock::now();
 
         Base16Encode(in_data.data(), in_data.size(), out_data.data());
         
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        std::cout<<"编码："<<in_data.size() <<"字节数据，" <<"耗时:"<<std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count()<<std::endl;
+        auto end2 = std::chrono::system_clock::now();
+        //std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        auto iMilliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(end2-start2).count();
+
+        std::cout<<"编码："<<in_data.size() <<"字节数据，" <<"耗时:"<< iMilliseconds <<std::endl;
         std::cout<<"结束计算"<<std::endl;
     }
 
