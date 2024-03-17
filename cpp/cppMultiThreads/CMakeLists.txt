@@ -57,5 +57,11 @@ add_subdirectory(thread_016)
 
 ##================================
 
+## 基于线程池实现音视频批量转码测试任务
+add_subdirectory(thread_case_1)
+
+## 完成线程池案例-基于ffpeg工具多线程转码视频
+#add_subdirectory(thread_case_2)
+
 
 
