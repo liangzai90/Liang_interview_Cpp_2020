@@ -84,6 +84,3 @@ valgrind  --leak-check=full  ./bin/thread_13  > t13_leck_check.log  2>&1
 ## more than C++20
 
  * **[C++20屏障barrier实现线程协调](./thread_019/readme.md)**
-
- * **[call_once多线程调用函数只进入一次](./thread_020/readme.md)**
-
