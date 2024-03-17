@@ -61,7 +61,7 @@ add_subdirectory(thread_016)
 add_subdirectory(thread_case_1)
 
 ## 完成线程池案例-基于ffpeg工具多线程转码视频
-#add_subdirectory(thread_case_2)
+add_subdirectory(thread_case_2)
 
 
 
