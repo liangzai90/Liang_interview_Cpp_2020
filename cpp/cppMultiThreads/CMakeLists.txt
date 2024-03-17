@@ -33,3 +33,29 @@ add_subdirectory(thread_009)
 # 多线程异步通信 和 并发计算
 add_subdirectory(thread_010)
 
+
+
+###================================+++++++++++++++++
+# 完成线程池的初始化和启动
+add_subdirectory(thread_011)
+
+# 完成线程池调度任务
+add_subdirectory(thread_012)
+
+# 完成线程池退出 并等待任务处理结束
+add_subdirectory(thread_013)
+
+# 线程池中正在运行的任务数量获取，使用 atomic 原子变量
+add_subdirectory(thread_014)
+
+
+## 使用智能指针管理线程对象和任务对象的生命周期
+add_subdirectory(thread_015)
+
+## 异步获取线程池中任务执行结果
+add_subdirectory(thread_016)
+
+##================================
+
+
+

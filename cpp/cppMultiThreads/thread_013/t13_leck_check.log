@@ -1,0 +1,64 @@
+==6204== Memcheck, a memory error detector
+==6204== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6204== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==6204== Command: ./bin/thread_13
+==6204== 
+===================test1==============
+---Thread pool Init 3
+Begin XThreadPool Run 109258496
+============================================
+109258496 MyTask Run henry1
+============================================
+.Begin XThreadPool Run 117651200
+Begin XThreadPool Run 126043904
+.End XThreadPool Run 117651200
+End XThreadPool Run 109258496
+End XThreadPool Run 126043904
+===================test2==============
+---Thread pool Init 3
+Begin XThreadPool Run 117651200
+Begin XThreadPool Run 126043904
+Begin XThreadPool Run 109258496
+============================================
+117651200 MyTask Run henry0
+============================================
+.============================================
+109258496 MyTask Run henry1
+============================================
+.============================================
+126043904 MyTask Run henry2
+============================================
+................End XThreadPool Run 126043904
+End XThreadPool Run 117651200
+End XThreadPool Run 109258496
+==6204== 
+==6204== HEAP SUMMARY:
+==6204==     in use at exit: 1,638 bytes in 46 blocks
+==6204==   total heap usage: 123 allocs, 77 frees, 5,335 bytes allocated
+==6204== 
+==6204== 24 bytes in 3 blocks are definitely lost in loss record 1 of 4
+==6204==    at 0x4C28593: operator new(unsigned long) (vg_replace_malloc.c:344)
+==6204==    by 0x40BC7B: XThreadPool::Start() (xthread_pool.cpp:23)
+==6204==    by 0x40A50B: Test1() (thread_pool.cpp:29)
+==6204==    by 0x40A806: main (thread_pool.cpp:62)
+==6204== 
+==6204== 24 bytes in 3 blocks are definitely lost in loss record 2 of 4
+==6204==    at 0x4C28593: operator new(unsigned long) (vg_replace_malloc.c:344)
+==6204==    by 0x40BC7B: XThreadPool::Start() (xthread_pool.cpp:23)
+==6204==    by 0x40A637: Test2() (thread_pool.cpp:47)
+==6204==    by 0x40A80B: main (thread_pool.cpp:63)
+==6204== 
+==6204== 1,590 (960 direct, 630 indirect) bytes in 20 blocks are definitely lost in loss record 4 of 4
+==6204==    at 0x4C28593: operator new(unsigned long) (vg_replace_malloc.c:344)
+==6204==    by 0x40A652: Test2() (thread_pool.cpp:50)
+==6204==    by 0x40A80B: main (thread_pool.cpp:63)
+==6204== 
+==6204== LEAK SUMMARY:
+==6204==    definitely lost: 1,008 bytes in 26 blocks
+==6204==    indirectly lost: 630 bytes in 20 blocks
+==6204==      possibly lost: 0 bytes in 0 blocks
+==6204==    still reachable: 0 bytes in 0 blocks
+==6204==         suppressed: 0 bytes in 0 blocks
+==6204== 
+==6204== For lists of detected and suppressed errors, rerun with: -s
+==6204== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

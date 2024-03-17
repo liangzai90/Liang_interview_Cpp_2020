@@ -25,5 +25,12 @@ target_link_libraries(thread_10_5 ${LIB_LIB})
 add_executable(thread_10_6 ./thread_10_6.cpp)
 target_link_libraries(thread_10_6 ${LIB_LIB})
 
+## 验证C++11多线程切片编码之后，是否可以 正常解码
+add_executable(thread_10_6_2 ./thread_10_6_2.cpp)
+target_link_libraries(thread_10_6_2 ${LIB_LIB})
+
+## 环境问题，C++17下面并行计算 编译不通过
+#add_executable(thread_10_7 ./thread_10_7.cpp)
+#target_link_libraries(thread_10_7 ${LIB_LIB})
 
 
