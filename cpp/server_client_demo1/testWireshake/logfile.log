@@ -1,0 +1,58 @@
+2024-04-16 22:55:49.794 [INFO ] [socketDemo] Server started on port 5566
+2024-04-16 22:55:53.345 [INFO ] [socketDemo] Accepted client connection from 192.168.10.108
+2024-04-16 23:06:49.593 [INFO ] [socketDemo] Accepted client connection from 192.168.10.108
+2024-04-16 23:06:49.593 [INFO ] [socketDemo] Received message from client: i am 8588
+2024-04-16 23:06:52.594 [INFO ] [socketDemo] Received message from client: hello world 0
+2024-04-16 23:07:24.072 [INFO ] [socketDemo] Client disconnected
+2024-04-16 23:11:45.467 [INFO ] [socketDemo] Server started on port 5566
+2024-04-16 23:11:49.585 [INFO ] [socketDemo] Accepted client connection from 192.168.10.108
+2024-04-16 23:11:49.585 [INFO ] [socketDemo] Received message from client: i am 8885
+2024-04-16 23:11:52.586 [INFO ] [socketDemo] Received message from client: hello world 0
+2024-04-16 23:11:58.474 [INFO ] [socketDemo] Received message from client: hello world 1
+2024-04-16 23:12:08.480 [INFO ] [socketDemo] Received message from client: hello world 2
+2024-04-16 23:12:18.480 [INFO ] [socketDemo] Received message from client: hello world 3
+2024-04-16 23:12:28.484 [INFO ] [socketDemo] Received message from client: hello world 4
+2024-04-16 23:12:38.492 [INFO ] [socketDemo] Received message from client: hello world 5
+2024-04-16 23:12:48.492 [INFO ] [socketDemo] Received message from client: hello world 6
+2024-04-16 23:12:58.493 [INFO ] [socketDemo] Received message from client: hello world 7
+2024-04-16 23:13:08.496 [INFO ] [socketDemo] Received message from client: hello world 8
+2024-04-16 23:13:18.501 [INFO ] [socketDemo] Received message from client: hello world 9
+2024-04-16 23:13:28.498 [INFO ] [socketDemo] Received message from client: hello world 10
+2024-04-16 23:13:38.500 [INFO ] [socketDemo] Received message from client: hello world 11
+2024-04-16 23:13:48.501 [INFO ] [socketDemo] Received message from client: hello world 12
+2024-04-16 23:13:58.506 [INFO ] [socketDemo] Received message from client: hello world 13
+2024-04-16 23:14:08.508 [INFO ] [socketDemo] Received message from client: hello world 14
+2024-04-16 23:14:18.509 [INFO ] [socketDemo] Received message from client: hello world 15
+2024-04-16 23:14:28.509 [INFO ] [socketDemo] Received message from client: hello world 16
+2024-04-16 23:14:38.512 [INFO ] [socketDemo] Received message from client: hello world 17
+2024-04-16 23:14:48.513 [INFO ] [socketDemo] Received message from client: hello world 18
+2024-04-16 23:14:58.517 [INFO ] [socketDemo] Received message from client: hello world 19
+2024-04-16 23:15:08.520 [INFO ] [socketDemo] Received message from client: hello world 20
+2024-04-16 23:15:18.520 [INFO ] [socketDemo] Received message from client: hello world 21
+2024-04-16 23:15:28.524 [INFO ] [socketDemo] Received message from client: hello world 22
+2024-04-16 23:15:38.525 [INFO ] [socketDemo] Received message from client: hello world 23
+2024-04-16 23:15:48.524 [INFO ] [socketDemo] Received message from client: hello world 24
+2024-04-16 23:15:58.528 [INFO ] [socketDemo] Received message from client: hello world 25
+2024-04-16 23:16:08.532 [INFO ] [socketDemo] Received message from client: hello world 26
+2024-04-16 23:16:18.535 [INFO ] [socketDemo] Received message from client: hello world 27
+2024-04-16 23:16:28.536 [INFO ] [socketDemo] Received message from client: hello world 28
+2024-04-16 23:16:38.537 [INFO ] [socketDemo] Received message from client: hello world 29
+2024-04-16 23:16:48.541 [INFO ] [socketDemo] Received message from client: hello world 30
+2024-04-16 23:16:58.541 [INFO ] [socketDemo] Received message from client: hello world 31
+2024-04-16 23:17:08.547 [INFO ] [socketDemo] Received message from client: hello world 32
+2024-04-16 23:17:18.548 [INFO ] [socketDemo] Received message from client: hello world 33
+2024-04-16 23:17:28.548 [INFO ] [socketDemo] Received message from client: hello world 34
+2024-04-16 23:17:38.553 [INFO ] [socketDemo] Received message from client: hello world 35
+2024-04-16 23:17:48.553 [INFO ] [socketDemo] Received message from client: hello world 36
+2024-04-16 23:17:58.557 [INFO ] [socketDemo] Received message from client: hello world 37
+2024-04-16 23:18:08.562 [INFO ] [socketDemo] Received message from client: hello world 38
+2024-04-16 23:18:18.563 [INFO ] [socketDemo] Received message from client: hello world 39
+2024-04-16 23:18:28.562 [INFO ] [socketDemo] Received message from client: hello world 40
+2024-04-16 23:18:38.567 [INFO ] [socketDemo] Received message from client: hello world 41
+2024-04-16 23:18:48.573 [INFO ] [socketDemo] Received message from client: hello world 42
+2024-04-16 23:18:58.574 [INFO ] [socketDemo] Received message from client: hello world 43
+2024-04-16 23:19:08.579 [INFO ] [socketDemo] Received message from client: hello world 44
+2024-04-16 23:19:18.582 [INFO ] [socketDemo] Received message from client: hello world 45
+2024-04-16 23:19:28.582 [INFO ] [socketDemo] Received message from client: hello world 46
+2024-04-16 23:19:38.586 [INFO ] [socketDemo] Received message from client: hello world 47
+2024-04-16 23:19:48.587 [INFO ] [socketDemo] Received message from client: hello world 48
