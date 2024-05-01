@@ -89,5 +89,16 @@ docker run -d \
 
 
 
+### docker-compose 部署 tars微服务框架，参考地址：
+
+https://www.cnblogs.com/music-liang/p/18169754
+
+注意，如果虚拟网络设置有问题，记得 删除之前设置的虚拟网络：
+
+```shell
+docker network rm tars
+```
+
+
 
 
