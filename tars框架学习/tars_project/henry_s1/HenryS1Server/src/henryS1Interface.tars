@@ -1,0 +1,51 @@
+
+module Test
+{
+    struct tagStructT1{
+        0 optional int parama1;
+        1 optional int parama2;
+        2 optional string parama3;
+    };
+
+    struct FStockPoolReq
+    {
+        0 optional int iMarket;                         //市场
+        1 optional string sCode;                        //代码
+    };
+    
+    struct FZDStockInfo
+    {
+        0 optional int iMarket;                         //市场
+        1 optional string sCode;                        //代码
+        2 optional string sName;                        //股票名称
+        3 optional double dNowPrice;                    //最新价
+        4 optional double dChgRatio;                    //涨跌幅
+    };
+
+    struct FStockPoolRsp
+    {
+        0 optional vector<FZDStockInfo> vecStock;
+        1 optional int iSize;                       //股票池股票总数量
+        2 optional long lTime;                      //数据刷新时间，精确到ms的时间戳
+        3 optional int iDate;                       //交易日期，解决清盘期间客户端不知道交易日日期问题
+    };
+
+
+interface henryS1Interface
+{
+    int test();
+
+    int funA1(int x, int y);
+    void funA2(int x, int y, out int sum);
+
+    string funB1(string str1);
+    void   funB2(string str1, out string str2);
+
+    /*
+    * 获取股票池
+    */
+    int stockPool(FStockPoolReq stReq, out FStockPoolRsp stRsp);
+
+};
+
+}; 
