@@ -31,18 +31,24 @@ sudo sh build.sh install # 安装框架
 
 # 框架需要的第三方库
 /usr/local/tars/cpp/thirdparty/lib64
+
 /usr/local/tars/cpp/thirdparty/lib
+
 /usr/local/tars/cpp/thirdparty/include
+
 /usr/local/tars/cpp/lib/
+
 /usr/local/tars/cpp/lib64
 
 
 ## 框架基础类的 头文件 目录
 /usr/local/tars/cpp/include/util
+
 /usr/local/tars/cpp/include/
 
 # 框架自带的程序的 协议文件
 /home/tarsproto/protocol/
+
 /usr/local/tars/cpp/include/framework/
 
 
